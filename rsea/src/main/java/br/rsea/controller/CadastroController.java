@@ -27,4 +27,24 @@ public class CadastroController {
     String getTexto(){
         return "Teste";
     }
+
+    @PutMapping("/moderador/{id}")
+    Usuario tornaMod(@RequestBody Usuario newUsuario, @RequestBody Long id) {
+        //TODO: process PUT request
+        CadastroDAO cads = CadastroDAO.getInstance();
+        Usuario userUpdate = (Usuario) cads.findById(id);
+        userUpdate.tornarModerador();
+        cads.update(userUpdate);
+        return userUpdate;
+        // return cads.findById(id)
+        //         .map(usuario -> {
+        //             usuario.setRank((1900 - getRank()) + getRank());
+        //             Moderador moderador = usuario.tornarModerador();
+        //             return db.save(moderador);
+        //         })
+        //         .orElseGet(() -> {
+        //             return db.save(newUsuario);
+        //         });
+
+    }
 }

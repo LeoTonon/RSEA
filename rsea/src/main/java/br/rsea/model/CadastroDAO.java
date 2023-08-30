@@ -55,10 +55,10 @@ public class CadastroDAO {
         }
     }
 
-    public void updateToListView(ArrayList<Usuario> ususToListView, int index){
-        Database db = getConnection();
-        Usuario usuario = new Usuario(index,db.cadastros.get(index).getNome(), 0,"");
-        ususToListView.add(usuario);
-        System.out.println(usuario);
-    }
+    // public void updateToListView(ArrayList<Usuario> ususToListView, int index){
+    //     Database db = getConnection();
+    //     Usuario usuario = new Usuario(index,db.cadastros.get(index).getNome(), 0,"");
+    //     ususToListView.add(usuario);
+    //     System.out.println(usuario);
+    // }
 }

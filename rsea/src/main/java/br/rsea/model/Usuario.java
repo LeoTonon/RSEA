@@ -107,13 +107,13 @@ public class Usuario extends Cadastro implements Editor {
     @Override
     public String toString(){
         if(getRank() <= 1000){
-            return "Usuário: "+getApelido()+" | Rank: "+getRank()+" NOVATO";
+            return "ID:"+getId()+ " Usuário: "+getApelido()+" | Rank: "+getRank()+" NOVATO";
         }
         if(getRank() > 1000 && getRank() <= 2000){
-            return "Usuário: "+getApelido()+" | Rank: "+getRank()+" AMADOR";
+            return "ID:"+getId()+ " Usuário: "+getApelido()+" | Rank: "+getRank()+" AMADOR";
         }
         if(getRank() > 2000){
-            return "Usuário: "+getApelido()+" | Rank: "+getRank()+" PRO";
+            return "ID:"+getId()+ " Usuário: "+getApelido()+" | Rank: "+getRank()+" PRO";
         }
         return null;
     }

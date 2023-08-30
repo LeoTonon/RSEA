@@ -117,4 +117,13 @@ public class Usuario extends Cadastro implements Editor {
         }
         return null;
     }
+    
+    public Moderador updateRank(){
+        double novoRank = ((1900 - this.getRank()) + this.getRank());
+        this.setRank(novoRank);
+        if (novoRank >= 1900) {
+            return tornarModerador();    
+        };        
+        return null;
+    };
 }

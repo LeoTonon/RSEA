@@ -28,13 +28,14 @@ public class CadastroController {
         return "Teste";
     }
 
-    @PutMapping("/moderador/{id}")
-    Usuario tornaMod(@RequestBody Usuario newUsuario, @RequestBody Long id) {
+    @PutMapping("/moderador")
+    // @PutMapping("/moderador/{id}")
+    Usuario tornaMod(@RequestBody Usuario newUsuario) {
+    // Usuario tornaMod(@RequestBody Usuario newUsuario, @PathVariable Long id) {
         //TODO: process PUT request
         CadastroDAO cads = CadastroDAO.getInstance();
-        Usuario userUpdate = (Usuario) cads.findById(id);
-        userUpdate.tornarModerador();
-        cads.update(userUpdate);
+        Usuario userUpdate = (Usuario) cads.findById(Long.valueOf(newUsuario.getId()));
+        userUpdate.updateRank();
         return userUpdate;
         // return cads.findById(id)
         //         .map(usuario -> {

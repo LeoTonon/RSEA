@@ -61,4 +61,14 @@ public class CadastroDAO {
         ususToListView.add(usuario);
         System.out.println(usuario);
     }
+
+    public Cadastro findById(Long id) {
+        // // for (Cadastro usuario : this.read()) {
+        // //     if (usuario.get) {
+                
+        // //     }
+        // // }   
+        // this.read()
+        return this.read().get(id.intValue());
+    }
 }

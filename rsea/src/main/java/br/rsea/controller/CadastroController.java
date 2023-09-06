@@ -3,10 +3,13 @@ package br.rsea.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.rsea.model.Cadastro;
 import br.rsea.model.CadastroDAO;
+import br.rsea.model.Usuario;
 
 @RestController
 public class CadastroController {
@@ -49,3 +52,4 @@ public class CadastroController {
 
     }
 }
+

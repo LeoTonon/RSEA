@@ -30,7 +30,7 @@ public class CadastroDAO {
 
 
     //Cria um novo cadastro
-    public void create(Cadastro novo){
+    public void create(Usuario novo){
         Database db = getConnection();
         db.addCad(novo);
     }   

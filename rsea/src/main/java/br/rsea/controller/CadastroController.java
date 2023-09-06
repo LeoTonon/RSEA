@@ -31,6 +31,13 @@ public class CadastroController {
         return "Teste";
     }
 
+    @PostMapping("/criar/usuario")
+    Usuario newUsuario(@RequestBody Usuario newUsuario){
+        CadastroDAO cads = CadastroDAO.getInstance();
+        cads.create(newUsuario);
+        return newUsuario;
+    }
+
     @PutMapping("/moderador")
     // @PutMapping("/moderador/{id}")
     Usuario tornaMod(@RequestBody Usuario newUsuario) {

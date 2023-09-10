@@ -12,11 +12,18 @@ public class Database {
 
     public Database() {
         cadastros = new ArrayList<>();
-        cadastros.add( new Usuario(1, "Usuário1", 1, "ok"));
-        cadastros.add( new Usuario(2, "Usuário2", 1, "ok"));
-        cadastros.add( new Usuario(3, "Usuário3", 1, "ok"));
+        // Usuario usuario = new Usuario(1, "Usuário1", 1, "ok");
+        // cadastros.add(usuario);
+        // cadastros.add( new Usuario(2, "Usuário2", 1, "ok"));
+        // cadastros.add( new Usuario(3, "Usuário3", 1, "ok"));
         comunidade = new ArrayList<>();
-        //comunidade.add(cadastros);
+        // Comunidade comu1 = new Comunidade("Comunidade 1", "Desc Comunidade 1");
+        // comu1.addUsuario(usuario);
+        // comunidade.add(comu1);
+        // comunidade.add( 
+        //     new Comunidade("Comunidade 1", "Desc Comunidade 1"));
+        // comunidade.add( 
+        //     new Comunidade("Comunidade 2", "Desc Comunidade 2"));
     } 
 
     public ArrayList<Cadastro> recuperaCad() {

@@ -44,8 +44,8 @@ public class ComunidadeDAO {
         return db.recuperaCom();
     }
 
-    public void delete(Cadastro deletar){
-        db.comunidade.remove(deletar);
+    public void delete(Usuario usu){
+        db.comunidade.remove(usu);
     }
 
     public void update(int i, Cadastro toUpdate){
@@ -53,25 +53,3 @@ public class ComunidadeDAO {
         db.cadastros.add(i, toUpdate);
     }
 }
-
-
-// public class ComunidadeDAO {
-//     protected String tituloComu,descricao;
-//     ArrayList<Usuario> lista = new ArrayList<>();
-
-//     public void adicionarUsuario(Usuario usuario) {
-//         lista.add(usuario);
-//         System.out.println("Usuário "+usuario.getApelido()+" adicionado!\n"+lista);
-//     }
-
-//     public void deletarUsuario(Usuario usuario) {
-//         lista.remove(usuario);
-//         System.out.println("Usuário "+usuario.getApelido()+" retirado!\n"+lista);
-//     }
-    
-//     public void listarUsuarios() {
-//         for(int i=0;i<lista.size();i++){
-//             System.out.println(lista);
-//         }
-//     }
-// }

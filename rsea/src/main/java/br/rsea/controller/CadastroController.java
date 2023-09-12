@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.rsea.model.Cadastro;
 import br.rsea.model.CadastroDAO;
+import br.rsea.model.Moderador;
+import br.rsea.model.ModeradorDAO;
 import br.rsea.model.Usuario;
 
 @RestController
@@ -27,9 +29,11 @@ public class CadastroController {
         return cads;
     }
 
-    @GetMapping("/teste")
-    String getTexto(){
-        return "Teste";
+    @GetMapping("/listar/moderadores/")
+    List<Moderador> getModeradores(){
+        ModeradorDAO dao = ModeradorDAO.getInstance();
+        List<Moderador> mods = dao.read();
+        return mods;
     }
 
     @PostMapping("/criar/usuario")
@@ -45,6 +49,8 @@ public class CadastroController {
     // Usuario tornaMod(@RequestBody Usuario newUsuario, @PathVariable Long id) {
         //TODO: process PUT request
         CadastroDAO cads = CadastroDAO.getInstance();
+        ModeradorDAO mods = ModeradorDAO.getInstance();
+        
         Usuario userUpdate = (Usuario) cads.findById(Long.valueOf(newUsuario.getId()));
         userUpdate.updateRank();
         return userUpdate;

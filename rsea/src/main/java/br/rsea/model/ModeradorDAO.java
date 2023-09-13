@@ -35,16 +35,4 @@ public class ModeradorDAO {
         Database db = getConnection();
         return db.recuperaMod();
     }
-
-    public void addModeradores(Moderador moderador) {
-        db.moders.add(moderador);
-    }
-
-    public void addDB(Moderador moderador) {
-        if(this.db == null){            
-            Database db = new Database();
-            this.db = db;
-        }
-        db.moders.add(moderador);
-    }
     }

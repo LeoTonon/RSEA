@@ -99,7 +99,7 @@ public class Usuario extends Cadastro implements Editor {
     public Moderador tornarModerador(){
         if(this.rank >= 1900){
             System.out.println("Você se tornou moderador! Meus parabéns!");
-            Moderador moderna = Moderador(this.apelido, this.rank, 0, 0);
+            Moderador moderna = new Moderador(this.apelido, this.rank, 0, 0);
             ModeradorDAO mod = new ModeradorDAO().getInstance();
             mod.addDB(moderna);
             return moderna;

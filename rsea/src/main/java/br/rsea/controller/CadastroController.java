@@ -29,7 +29,7 @@ public class CadastroController {
         return cads;
     }
 
-    @GetMapping("/listar/moderadores/")
+    @GetMapping("/listar/moderadores")
     List<Moderador> getModeradores(){
         ModeradorDAO dao = ModeradorDAO.getInstance();
         List<Moderador> mods = dao.read();

@@ -101,7 +101,7 @@ public class Usuario extends Cadastro implements Editor {
             System.out.println("Você se tornou moderador! Meus parabéns!");
             Moderador moderna = new Moderador(this.apelido, this.rank, 0, 0);
             ModeradorDAO mod = new ModeradorDAO().getInstance();
-            mod.addDB(moderna);
+            mod.create(moderna);
             return moderna;
         }
         return null;

@@ -30,7 +30,7 @@ public class CadastroDAO {
 
 
     //Cria um novo cadastro
-    public void create(Cadastro novo){
+    public void create(Usuario novo){
         Database db = getConnection();
         db.addCad(novo);
     }   
@@ -54,11 +54,14 @@ public class CadastroDAO {
             System.out.println(usuario);
         }
     }
+    public void updateToListView(ArrayList<Usuario> ususToListView, int index){
+        Database db = getConnection();
+        Usuario usuario = new Usuario(index,db.cadastros.get(index).getNome(), 0,"");
+        ususToListView.add(usuario);
+        System.out.println(usuario);
+    }
 
-    // public void updateToListView(ArrayList<Usuario> ususToListView, int index){
-    //     Database db = getConnection();
-    //     Usuario usuario = new Usuario(index,db.cadastros.get(index).getNome(), 0,"");
-    //     ususToListView.add(usuario);
-    //     System.out.println(usuario);
-    // }
+    public Cadastro findById(Long id) {
+        return this.read().get(id.intValue());
+    }
 }

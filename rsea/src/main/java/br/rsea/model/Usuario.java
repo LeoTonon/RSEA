@@ -99,8 +99,15 @@ public class Usuario extends Cadastro implements Editor {
     public Moderador tornarModerador(){
         if(this.rank >= 1900){
             System.out.println("Você se tornou moderador! Meus parabéns!");
-            return  new Moderador(this.apelido, this.rank, 0, 0);
+            Moderador moderna = new Moderador(this.getApelido(), this.getRank(), this.getId(), 0);
+            ModeradorDAO mod = new ModeradorDAO().getInstance();
+            mod.create(moderna);
+            return moderna;
         }
+        return null;
+    }
+
+    private Moderador Moderador(String apelido2, double rank2, int i, int j) {
         return null;
     }
 
@@ -117,4 +124,13 @@ public class Usuario extends Cadastro implements Editor {
         }
         return null;
     }
+    
+    public Moderador updateRank(){
+        double novoRank = ((1900 - this.getRank()) + this.getRank());
+        this.setRank(novoRank);
+        if (novoRank >= 1900) {
+            return tornarModerador();    
+        };        
+        return null;
+    };
 }

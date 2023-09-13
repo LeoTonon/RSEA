@@ -1,7 +1,5 @@
 package br.rsea.controller;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,6 +16,7 @@ import br.rsea.model.ComunidadeDAO;
 public class ComunidadeController {
     ComunidadeDAO dao = ComunidadeDAO.getInstance();
     List<Comunidade> cads = dao.read();
+    int comunidadeLugar=0;
 
     @PostMapping("/criar/comunidade")
     public Comunidade postComunidade(@RequestBody Comunidade comu){
@@ -32,27 +31,30 @@ public class ComunidadeController {
 
     @DeleteMapping("/{comunidade}/{id}")
     public List<Comunidade> delIntegrantes( @PathVariable("comunidade") String comunidade, @PathVariable("id") int id){
-            //2
-            /*
-                dao.read() é de 0 a n;
-                dao.read().get(0).getLista().size() é de 0 a n;
-                */
-                int comunidadeLugar=0;
-                for(int k=0 ; k<dao.read().size() ; k++){
-                    if(dao.read().get(k).getTituloComu().equals(comunidade)){
-                        comunidadeLugar = k;
-                    }
+        setarCaminhoComu(comunidade, id);
+
+        try {
+            for(int i=0 ; i<dao.read().get(comunidadeLugar).getLista().size() ; i++){
+                if(dao.read().get(comunidadeLugar).getLista().get(i).getId() == id){
+                    dao.read().get(comunidadeLugar).getLista().remove(i);
                 }
-                for(int i=0 ; i<dao.read().get(comunidadeLugar).getLista().size() ; i++){
-                    if(dao.read().get(comunidadeLugar).getLista().get(i).getId() == id){
-                        System.out.println(dao.read().get(comunidadeLugar).getLista().size()); 
-                        dao.read().get(comunidadeLugar).getLista().remove(i);
-                        System.out.println("ASUHASHSDAIYHUASDIHUASD");
-                        System.out.println(dao.read().get(comunidadeLugar).getLista().size()); 
-                        System.out.println("foi?");
-                    }
-                    System.out.println("testes");
+            }
+            return cads; 
+        } catch (Exception e) {
+            return cads; 
+        }     
+    }
+
+    public void setarCaminhoComu (String comunidade, int comunidadeLugar){
+        try {
+            for(int k=0 ; k<dao.read().size() ; k++){
+                if(dao.read().get(k).getTituloComu().equals(comunidade)){
+                    comunidadeLugar = k;
                 }
-                    return cads;   
+            }
+        } catch (Exception e) {
+            System.out.println("Não tem nenhuma comunidade criada!");
+        }
+
     }
 }

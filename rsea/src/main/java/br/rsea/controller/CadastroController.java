@@ -3,6 +3,7 @@ package br.rsea.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,6 +25,18 @@ public class CadastroController {
         return cads;
     }
 
+    @GetMapping("/cadastro/{id}")
+    Cadastro getusuariosById(@PathVariable("id") int id){
+        CadastroDAO dao = CadastroDAO.getInstance();
+        List<Cadastro> cads = dao.read();
+        try {
+            return cads.get(id-1);
+        }catch(Exception e){
+            return null;
+        }
+        
+    }
+
     @GetMapping("/listar/moderadores")
     List<Moderador> getModeradores(){
         ModeradorDAO dao = ModeradorDAO.getInstance();
@@ -39,26 +52,12 @@ public class CadastroController {
     }
 
     @PutMapping("/moderador")
-    // @PutMapping("/moderador/{id}")
     Usuario tornaMod(@RequestBody Usuario newUsuario) {
-    // Usuario tornaMod(@RequestBody Usuario newUsuario, @PathVariable Long id) {
-        //TODO: process PUT request
         CadastroDAO cads = CadastroDAO.getInstance();
         ModeradorDAO mods = ModeradorDAO.getInstance();
-        
         Usuario userUpdate = (Usuario) cads.findById(Long.valueOf(newUsuario.getId()));
         userUpdate.updateRank();
         return userUpdate;
-        // return cads.findById(id)
-        //         .map(usuario -> {
-        //             usuario.setRank((1900 - getRank()) + getRank());
-        //             Moderador moderador = usuario.tornarModerador();
-        //             return db.save(moderador);
-        //         })
-        //         .orElseGet(() -> {
-        //             return db.save(newUsuario);
-        //         });
-
     }
 }
 

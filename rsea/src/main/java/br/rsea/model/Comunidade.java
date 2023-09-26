@@ -3,11 +3,20 @@ package br.rsea.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Comunidade {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected int id;
     protected String tituloComu, descricao;
-    // @JsonBackReference
+
     List<Usuario> lista = new ArrayList<>();
 
     public Comunidade() {

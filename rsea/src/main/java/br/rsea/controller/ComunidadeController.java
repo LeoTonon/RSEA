@@ -32,7 +32,6 @@ public class ComunidadeController {
     @DeleteMapping("/{comunidade}/{id}")
     public List<Comunidade> delIntegrantes( @PathVariable("comunidade") String comunidade, @PathVariable("id") int id){
         setarCaminhoComu(comunidade, id);
-
         try {
             for(int i=0 ; i<dao.read().get(comunidadeLugar).getLista().size() ; i++){
                 if(dao.read().get(comunidadeLugar).getLista().get(i).getId() == id){
@@ -55,6 +54,5 @@ public class ComunidadeController {
         } catch (Exception e) {
             System.out.println("Não tem nenhuma comunidade criada!");
         }
-
     }
 }

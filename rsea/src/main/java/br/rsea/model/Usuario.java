@@ -2,13 +2,25 @@ package br.rsea.model;
 
 import java.util.ArrayList;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Usuario extends Cadastro implements Editor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    public int id;
     public String apelido, status;
     public double rank;
-    public int id;
 
     ArrayList<Arte> producoes = new ArrayList<>();
     ArrayList<Postagem> postagens = new ArrayList<>();
+
+    public Usuario() {
+
+    }
 
     public Usuario(int id,String apelido, double rank,String status) {
         this.id = id;

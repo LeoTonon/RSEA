@@ -1,6 +1,6 @@
 package br.rsea.model;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,8 +15,8 @@ public class Usuario extends Cadastro implements Editor {
     public String apelido, status;
     public double rank;
 
-    ArrayList<Arte> producoes = new ArrayList<>();
-    ArrayList<Postagem> postagens = new ArrayList<>();
+    // ArrayList<Arte> producoes = new ArrayList<>();
+    // ArrayList<Postagem> postagens = new ArrayList<>();
 
     public Usuario() {
 
@@ -61,21 +61,21 @@ public class Usuario extends Cadastro implements Editor {
         this.id = id;
     }
 
-    public ArrayList<Arte> getProducoes() {
-        return producoes;
-    }
+    // public ArrayList<Arte> getProducoes() {
+    //     return producoes;
+    // }
 
-    public void setProducoes(ArrayList<Arte> producoes) {
-        this.producoes = producoes;
-    }
+    // public void setProducoes(ArrayList<Arte> producoes) {
+    //     this.producoes = producoes;
+    // }
 
-    public ArrayList<Postagem> getPostagens() {
-        return postagens;
-    }
+    // public ArrayList<Postagem> getPostagens() {
+    //     return postagens;
+    // }
 
-    public void setPostagens(ArrayList<Postagem> postagens) {
-        this.postagens = postagens;
-    }
+    // public void setPostagens(ArrayList<Postagem> postagens) {
+    //     this.postagens = postagens;
+    // }
 
     @Override
     public

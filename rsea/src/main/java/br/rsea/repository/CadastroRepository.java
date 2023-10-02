@@ -2,8 +2,8 @@ package br.rsea.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import br.rsea.model.Usuario;
+import br.rsea.model.Cadastro;
 
-public interface CadastroRepository extends CrudRepository<Usuario, Integer>{
+public interface CadastroRepository extends CrudRepository<Cadastro, Integer>{
     
 }

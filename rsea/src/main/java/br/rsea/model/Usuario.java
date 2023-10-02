@@ -8,11 +8,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Usuario extends Cadastro implements Editor {
+public class Usuario extends Cadastro implements Editor{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public int id;
-    public String apelido, status;
+    public String apelido;
+    public String status;
     public double rank;
 
     ArrayList<Arte> producoes = new ArrayList<>();

@@ -15,10 +15,12 @@ import br.rsea.model.CadastroDAO;
 import br.rsea.model.Moderador;
 import br.rsea.model.ModeradorDAO;
 import br.rsea.model.Usuario;
+import br.rsea.repository.UsuarioRepository;
 
 @RestController
 public class CadastroController {
     @Autowired
+    UsuarioRepository usuarioRepository;
     
     @GetMapping("/cadastro")
     List<Cadastro> getCadastros(){

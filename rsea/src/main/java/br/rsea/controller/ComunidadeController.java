@@ -33,20 +33,20 @@ public class ComunidadeController {
         return (List<Comunidade>) comunidadeRepository.findAll();
     }
 
-    @DeleteMapping("/{comunidade}/{id}")
-    public List<Comunidade> delIntegrantes( @PathVariable("comunidade") String comunidade, @PathVariable("id") int id){
-        setarCaminhoComu(comunidade, id);
-        try {
-            for(int i=0 ; i<dao.read().get(comunidadeLugar).getLista().size() ; i++){
-                if(dao.read().get(comunidadeLugar).getLista().get(i).getId() == id){
-                    dao.read().get(comunidadeLugar).getLista().remove(i);
-                }
-            }
-            return cads; 
-        } catch (Exception e) {
-            return cads; 
-        }     
-    }
+    // @DeleteMapping("/{comunidade}/{id}")
+    // public List<Comunidade> delIntegrantes( @PathVariable("comunidade") String comunidade, @PathVariable("id") int id){
+    //     setarCaminhoComu(comunidade, id);
+    //     try {
+    //         for(int i=0 ; i<dao.read().get(comunidadeLugar).getLista().size() ; i++){
+    //             if(dao.read().get(comunidadeLugar).getLista().get(i).getId() == id){
+    //                 dao.read().get(comunidadeLugar).getLista().remove(i);
+    //             }
+    //         }
+    //         return cads; 
+    //     } catch (Exception e) {
+    //         return cads; 
+    //     }     
+    // }
 
     public void setarCaminhoComu (String comunidade, int comunidadeLugar){
         try {

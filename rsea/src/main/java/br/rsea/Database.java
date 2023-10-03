@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 import br.rsea.model.Cadastro;
 import br.rsea.model.Comunidade;
-import br.rsea.model.Usuario;
 import br.rsea.model.Moderador;
-
 
 public class Database {
     public ArrayList<Cadastro> cadastros;
@@ -15,9 +13,6 @@ public class Database {
 
     public Database() {
         cadastros = new ArrayList<>();
-        cadastros.add( new Usuario(0, "ok", 1, "ok"));
-        cadastros.add( new Usuario(1, "ok", 1, "ok"));
-        cadastros.add( new Usuario(2, "ok", 1, "ok"));
         comunidade = new ArrayList<>();
         moders = new ArrayList<>();
     } 

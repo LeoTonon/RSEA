@@ -54,7 +54,6 @@ public class CadastroDAO {
             System.out.println(usuario);
         }
     }
-
     public void updateToListView(ArrayList<Usuario> ususToListView, int index){
         Database db = getConnection();
         Usuario usuario = new Usuario(index,db.cadastros.get(index).getNome(), 0,"");
@@ -63,12 +62,6 @@ public class CadastroDAO {
     }
 
     public Cadastro findById(Long id) {
-        // // for (Cadastro usuario : this.read()) {
-        // //     if (usuario.get) {
-                
-        // //     }
-        // // }   
-        // this.read()
         return this.read().get(id.intValue());
     }
 }

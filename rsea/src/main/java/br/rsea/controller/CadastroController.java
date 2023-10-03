@@ -2,9 +2,11 @@ package br.rsea.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,20 +15,30 @@ import br.rsea.model.CadastroDAO;
 import br.rsea.model.Moderador;
 import br.rsea.model.ModeradorDAO;
 import br.rsea.model.Usuario;
+import br.rsea.repository.UsuarioRepository;
 
 @RestController
 public class CadastroController {
-    /*
-     * Endpoint para retornar a lista de todas as artes
-     */
+    @Autowired
+    UsuarioRepository usuarioRepository;
+    
     @GetMapping("/cadastro")
     List<Cadastro> getCadastros(){
-        //1. Acessar o repositório de Artes
         CadastroDAO dao = CadastroDAO.getInstance();
-        //2. Usar o método que retorna todas Artes
         List<Cadastro> cads = dao.read();
-        //3. Retornar a lista de Artes com return
         return cads;
+    }
+
+    @GetMapping("/cadastro/{id}")
+    Cadastro getusuariosById(@PathVariable("id") int id){
+        CadastroDAO dao = CadastroDAO.getInstance();
+        List<Cadastro> cads = dao.read();
+        try {
+            return cads.get(id-1);
+        }catch(Exception e){
+            return null;
+        }
+        
     }
 
     @GetMapping("/listar/moderadores")
@@ -38,32 +50,24 @@ public class CadastroController {
 
     @PostMapping("/criar/usuario")
     Usuario newUsuario(@RequestBody Usuario newUsuario){
-        CadastroDAO cads = CadastroDAO.getInstance();
-        cads.create(newUsuario);
-        return newUsuario;
+        return UsuarioRepository.save(newUsuario);
+        UsuarioRepository.findAll();
     }
 
     @PutMapping("/moderador")
-    // @PutMapping("/moderador/{id}")
     Usuario tornaMod(@RequestBody Usuario newUsuario) {
-    // Usuario tornaMod(@RequestBody Usuario newUsuario, @PathVariable Long id) {
-        //TODO: process PUT request
         CadastroDAO cads = CadastroDAO.getInstance();
         ModeradorDAO mods = ModeradorDAO.getInstance();
-        
         Usuario userUpdate = (Usuario) cads.findById(Long.valueOf(newUsuario.getId()));
         userUpdate.updateRank();
         return userUpdate;
-        // return cads.findById(id)
-        //         .map(usuario -> {
-        //             usuario.setRank((1900 - getRank()) + getRank());
-        //             Moderador moderador = usuario.tornarModerador();
-        //             return db.save(moderador);
-        //         })
-        //         .orElseGet(() -> {
-        //             return db.save(newUsuario);
-        //         });
-
     }
+    /*
+     * 1. Puxa o id do usuário
+     * 2. Puxa o updateRank
+     * 3. Atualiza o rank
+     * 4. Cria novo moderador
+     * 5. Retorna tando o User quanto o Mod criado 
+     */
 }
 

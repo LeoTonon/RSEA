@@ -1,17 +1,32 @@
 package br.rsea.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Comunidade {
-    protected String tituloComu,descricao;
-    ArrayList<Usuario> lista = new ArrayList<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    protected int id;
+    protected String tituloComu, descricao;
 
-    public Comunidade(String tituloComu, String descricao, ArrayList<Usuario> lista) {
+    // List<Usuario> lista = new ArrayList<>();
+
+    public Comunidade() {
+
+    }
+
+    public Comunidade(String tituloComu, String descricao) {
         this.tituloComu = tituloComu;
         this.descricao = descricao;
-        this.lista = lista;
+        // this.lista = new ArrayList<>();
     }
-    
+
     public String getTituloComu() {
         return tituloComu;
     }
@@ -28,9 +43,21 @@ public class Comunidade {
         this.descricao = descricao;
     }
 
+    // public List<Usuario> getLista() {
+    //     return lista;
+    // }
+
+    // public void setLista(List<Usuario> lista) {
+    //     this.lista = lista;
+    // }
+
     @Override
     public String toString() {
-        return tituloComu+" "+descricao;
+        return tituloComu + " " + descricao;
     }
+
+    // public void addUsuario(Usuario usuario) {
+    //     lista.add(usuario);
+    // }
 
 }

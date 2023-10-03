@@ -47,6 +47,7 @@ public class Database {
 
     public void addCom(Comunidade novo) {
         comunidade.add(novo);
+        
     }
 
     public int readCom(){

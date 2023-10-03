@@ -11,21 +11,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.rsea.model.Comunidade;
-import br.rsea.model.ComunidadeDAO;
+//import br.rsea.model.ComunidadeDAO;
 import br.rsea.repository.ComunidadeRepository;
 
 @RestController
 public class ComunidadeController {
     @Autowired
     ComunidadeRepository comunidadeRepository;
-    ComunidadeDAO dao = ComunidadeDAO.getInstance();
-    List<Comunidade> cads = dao.read();
+    //ComunidadeDAO dao = ComunidadeDAO.getInstance();
+    //List<Comunidade> cads = dao.read();
     int comunidadeLugar=0;
 
     @PostMapping("/criar/comunidade")
     public Comunidade postComunidade(@RequestBody Comunidade comu){
-        dao.create(comu);
-        return (Comunidade) comunidadeRepository.findAll();
+        //dao.create(comu);
+        try {
+            comunidadeRepository.save(comu);
+            return (Comunidade) comunidadeRepository.findAll();
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @GetMapping("/comunidade")
@@ -33,30 +38,26 @@ public class ComunidadeController {
         return (List<Comunidade>) comunidadeRepository.findAll();
     }
 
-    // @DeleteMapping("/{comunidade}/{id}")
-    // public List<Comunidade> delIntegrantes( @PathVariable("comunidade") String comunidade, @PathVariable("id") int id){
-    //     setarCaminhoComu(comunidade, id);
+    @DeleteMapping("/delete/{id}")
+    public Comunidade delIntegrantes(@PathVariable("id") int id){
+        //setarCaminhoComu(comunidade, id);
+        try {
+            comunidadeRepository.deleteById(id);
+            return (Comunidade) comunidadeRepository.findAll();
+        } catch (Exception e) {
+            return null; 
+        }     
+    }
+
+    // public void setarCaminhoComu (String comunidade, int comunidadeLugar){
     //     try {
-    //         for(int i=0 ; i<dao.read().get(comunidadeLugar).getLista().size() ; i++){
-    //             if(dao.read().get(comunidadeLugar).getLista().get(i).getId() == id){
-    //                 dao.read().get(comunidadeLugar).getLista().remove(i);
+    //         for(int k=0 ; k<dao.read().size() ; k++){
+    //             if(dao.read().get(k).getTituloComu().equals(comunidade)){
+    //                 comunidadeLugar = k;
     //             }
     //         }
-    //         return cads; 
     //     } catch (Exception e) {
-    //         return cads; 
-    //     }     
+    //         System.out.println("Não tem nenhuma comunidade criada!");
+    //     }
     // }
-
-    public void setarCaminhoComu (String comunidade, int comunidadeLugar){
-        try {
-            for(int k=0 ; k<dao.read().size() ; k++){
-                if(dao.read().get(k).getTituloComu().equals(comunidade)){
-                    comunidadeLugar = k;
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Não tem nenhuma comunidade criada!");
-        }
-    }
 }

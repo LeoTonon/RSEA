@@ -1,8 +1,5 @@
 package br.rsea.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,8 +11,7 @@ public class Comunidade {
     @GeneratedValue(strategy = GenerationType.AUTO)
     protected int id;
     protected String tituloComu, descricao;
-
-    // List<Usuario> lista = new ArrayList<>();
+    //List<Usuario> lista = new ArrayList<>();
 
     public Comunidade() {
 
@@ -24,7 +20,7 @@ public class Comunidade {
     public Comunidade(String tituloComu, String descricao) {
         this.tituloComu = tituloComu;
         this.descricao = descricao;
-        // this.lista = new ArrayList<>();
+        //this.lista = new ArrayList<>();
     }
 
     public String getTituloComu() {

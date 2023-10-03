@@ -1,7 +1,5 @@
 package br.rsea.model;
 
-import java.util.ArrayList;
-
 import br.rsea.Database;
 
 public class ComunidadeDAO {
@@ -39,10 +37,10 @@ public class ComunidadeDAO {
     }   
 
     // Recupera todas as listas
-    public ArrayList<Comunidade> read(){
-        Database db = getConnection();
-        return db.recuperaCom();
-    }
+    // public ArrayList<Comunidade> read(){
+    //     Database db = getConnection();
+    //     return db.recuperaCom();
+    // }
 
     public void delete(Usuario usu){
         db.comunidade.remove(usu);

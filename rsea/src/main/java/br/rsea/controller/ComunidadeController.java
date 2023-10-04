@@ -17,29 +17,27 @@ import br.rsea.repository.ComunidadeRepository;
 public class ComunidadeController {
     @Autowired
     ComunidadeRepository comunidadeRepository;
+    int comunidadeLugar=0;
 
     @PostMapping("/criar/comunidade")
     public Comunidade postComunidade(@RequestBody Comunidade comu){
-        try {
-            comunidadeRepository.save(comu);
-            return (Comunidade) comunidadeRepository.findAll();
-        } catch (Exception e) {
-            return null;
-        }
+        comunidadeRepository.save(comu);
+        return comu;
     }
 
     @GetMapping("/comunidade")
-    List<Comunidade> getComunidade(){
-        return (List<Comunidade>) comunidadeRepository.findAll();
+    public Comunidade getComunidade(){
+        return (Comunidade) comunidadeRepository.findAll();
     }
 
-    @DeleteMapping("/delete/{id}")
-    public Comunidade delIntegrantes(@PathVariable("id") int id){
-        try {
+    @DeleteMapping("/{comunidade}/{id}")
+    Comunidade deleteComunidade(@RequestBody Comunidade comu, @PathVariable int id){
+        Comunidade comunidade = (comunidadeRepository.findById(id).get());
+        if(comunidade.getTituloComu().equals(comu.getTituloComu())){
             comunidadeRepository.deleteById(id);
             return (Comunidade) comunidadeRepository.findAll();
-        } catch (Exception e) {
-            return null; 
-        }     
+        }
+
+        return null;
     }
 }

@@ -2,8 +2,6 @@ package br.rsea.model;
 
 import javax.persistence.Column;
 
-//import java.util.ArrayList;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,9 +16,6 @@ public class Usuario{
     public String status;
     @Column(name = "rank", nullable = false)
     public double rank;
-
-    // ArrayList<Arte> producoes = new ArrayList<>();
-    // ArrayList<Postagem> postagens = new ArrayList<>();
 
     public Usuario() {
     }
@@ -65,53 +60,6 @@ public class Usuario{
         this.rank = rank;
     }
 
-    // public ArrayList<Arte> getProducoes() {
-    //     return producoes;
-    // }
-
-    // public void setProducoes(ArrayList<Arte> producoes) {
-    //     this.producoes = producoes;
-    // }
-
-    // public ArrayList<Postagem> getPostagens() {
-    //     return postagens;
-    // }
-
-    // public void setPostagens(ArrayList<Postagem> postagens) {
-    //     this.postagens = postagens;
-    // }
-
-    // @Override
-    // public
-    // void alterarPost() {
-       
-        
-    // }
-
-    // @Override
-    // public void editarComunidade() {
-        
-
-    // }
-
-    // @Override
-    // public void editarUsuario() {
-        
-    // }
-
-    // @Override
-    // public void status() {
-    //     if(rank <= 1000){
-    //         System.out.println(NOVATO);
-    //     }
-    //     if(rank > 1000 && rank <= 2000){
-    //         System.out.println(INTER);
-    //     }
-    //     if(rank > 2000){
-    //         System.out.println(PRO);
-    //     }
-    // }
-
     // public Moderador tornarModerador(){
     //     if(this.rank >= 1900){
     //         System.out.println("Você se tornou moderador! Meus parabéns!");
@@ -123,24 +71,6 @@ public class Usuario{
     //     return null;
     // }
 
-    // private Moderador Moderador(String apelido2, double rank2, int i, int j) {
-    //     return null;
-    // }
-
-    // @Override
-    // public String toString(){
-    //     if(getRank() <= 1000){
-    //         return "ID:"+getId()+ " Usuário: "+getApelido()+" | Rank: "+getRank()+" NOVATO";
-    //     }
-    //     if(getRank() > 1000 && getRank() <= 2000){
-    //         return "ID:"+getId()+ " Usuário: "+getApelido()+" | Rank: "+getRank()+" AMADOR";
-    //     }
-    //     if(getRank() > 2000){
-    //         return "ID:"+getId()+ " Usuário: "+getApelido()+" | Rank: "+getRank()+" PRO";
-    //     }
-    //     return null;
-    // }
-    
     // public Moderador updateRank(){
     //     double novoRank = ((1900 - this.getRank()) + this.getRank());
     //     this.setRank(novoRank);

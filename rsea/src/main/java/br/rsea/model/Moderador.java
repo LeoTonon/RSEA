@@ -2,11 +2,11 @@ package br.rsea.model;
 
 import javax.persistence.Entity;
 
+@Entity
 public class Moderador extends Usuario{
     private int id,reputacao;
     private static String status;
 
-    @Entity
     public Moderador(String apelido, double rank, int id, int reputacao) {
         super(id, apelido, rank, status);
         this.id = id;

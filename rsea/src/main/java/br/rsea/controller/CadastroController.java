@@ -58,30 +58,6 @@ public class CadastroController {
         }else{
             throw new HttpClientErrorException(HttpStatus.NOT_FOUND, "Não existe Usuário com o id = " + id);
         }
-        
-
-        // if(this.rank >= 1900){
-        //     moderadorRepository.save(newModerador);
-        //     return newModerador;
-        // } else {
-        //     return null;
-        // }
     }
-
-    // @PutMapping("/moderador")
-    // Usuario tornaMod(@RequestBody Usuario newUsuario) {
-    //     CadastroDAO cads = CadastroDAO.getInstance();
-    //     ModeradorDAO mods = ModeradorDAO.getInstance();
-    //     Usuario userUpdate = (Usuario) cads.findById(Long.valueOf(newUsuario.getId()));
-    //     userUpdate.updateRank();
-    //     return userUpdate;
-    // }
-    /*
-     * 1. Puxa o id do usuário
-     * 2. Puxa o updateRank
-     * 3. Atualiza o rank
-     * 4. Cria novo moderador
-     * 5. Retorna tando o User quanto o Mod criado 
-     */
 }
 

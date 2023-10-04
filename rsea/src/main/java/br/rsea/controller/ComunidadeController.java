@@ -29,31 +29,4 @@ public class ComunidadeController {
     List<Comunidade> getComunidade(){
         return (List<Comunidade>) comunidadeRepository.findAll();
     }
-
-    // @DeleteMapping("/{comunidade}/{id}")
-    // public List<Comunidade> delIntegrantes( @PathVariable("comunidade") String comunidade, @PathVariable("id") int id){
-    //     setarCaminhoComu(comunidade, id);
-    //     try {
-    //         for(int i=0 ; i<dao.read().get(comunidadeLugar).getLista().size() ; i++){
-    //             if(dao.read().get(comunidadeLugar).getLista().get(i).getId() == id){
-    //                 dao.read().get(comunidadeLugar).getLista().remove(i);
-    //             }
-    //         }
-    //         return cads; 
-    //     } catch (Exception e) {
-    //         return cads; 
-    //     }     
-    // }
-
-    // public void setarCaminhoComu (String comunidade, int comunidadeLugar){
-    //     try {
-    //         for(int k=0 ; k<dao.read().size() ; k++){
-    //             if(dao.read().get(k).getTituloComu().equals(comunidade)){
-    //                 comunidadeLugar = k;
-    //             }
-    //         }
-    //     } catch (Exception e) {
-    //         System.out.println("Não tem nenhuma comunidade criada!");
-    //     }
-    // }
 }

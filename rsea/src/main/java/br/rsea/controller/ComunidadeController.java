@@ -17,7 +17,6 @@ import br.rsea.repository.ComunidadeRepository;
 public class ComunidadeController {
     @Autowired
     ComunidadeRepository comunidadeRepository;
-    int comunidadeLugar=0;
 
     @PostMapping("/criar/comunidade")
     public Comunidade postComunidade(@RequestBody Comunidade comu){

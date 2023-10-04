@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
-import br.rsea.model.Cadastro;
 import br.rsea.model.Moderador;
 import br.rsea.model.Usuario;
 import br.rsea.repository.UsuarioRepository;

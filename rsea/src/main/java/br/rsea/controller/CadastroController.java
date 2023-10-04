@@ -23,10 +23,8 @@ public class CadastroController {
     UsuarioRepository usuarioRepository;
     
     @GetMapping("/cadastro")
-    List<Cadastro> getCadastros(){
-        CadastroDAO dao = CadastroDAO.getInstance();
-        List<Cadastro> cads = dao.read();
-        return cads;
+    public List<Cadastro> getCadastros(){
+        return (List<Cadastro>)UsuarioRepository.findAll();
     }
 
     @GetMapping("/cadastro/{id}")

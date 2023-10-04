@@ -1,6 +1,7 @@
 package br.rsea.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.rsea.model.Cadastro;
-import br.rsea.model.CadastroDAO;
 import br.rsea.model.Moderador;
-import br.rsea.model.ModeradorDAO;
 import br.rsea.model.Usuario;
 import br.rsea.repository.UsuarioRepository;
 
@@ -23,46 +22,41 @@ public class CadastroController {
     UsuarioRepository usuarioRepository;
     
     @GetMapping("/cadastro")
-    List<Cadastro> getCadastros(){
-        CadastroDAO dao = CadastroDAO.getInstance();
-        List<Cadastro> cads = dao.read();
-        return cads;
+    Iterable<Usuario> getCadastros(){
+        return usuarioRepository.findAll();
     }
 
     @GetMapping("/cadastro/{id}")
-    Cadastro getusuariosById(@PathVariable("id") int id){
-        CadastroDAO dao = CadastroDAO.getInstance();
-        List<Cadastro> cads = dao.read();
+    Optional<Usuario> getusuariosById(@PathVariable("id") int id){
         try {
-            return cads.get(id-1);
+            return usuarioRepository.findById(id);
         }catch(Exception e){
             return null;
         }
         
     }
 
-    @GetMapping("/listar/moderadores")
-    List<Moderador> getModeradores(){
-        ModeradorDAO dao = ModeradorDAO.getInstance();
-        List<Moderador> mods = dao.read();
-        return mods;
-    }
+    // @GetMapping("/listar/moderadores")
+    // List<Moderador> getModeradores(){
+    //     ModeradorDAO dao = ModeradorDAO.getInstance();
+    //     List<Moderador> mods = dao.read();
+    //     return mods;
+    // }
 
-    @PostMapping("/criar/usuario")
-    Usuario newUsuario(@RequestBody Usuario newUsuario){
-        CadastroDAO cads = CadastroDAO.getInstance();
-        cads.create(newUsuario);
-        return newUsuario;
-    }
+    // @PostMapping("/criar/usuario")
+    // Usuario newUsuario(@RequestBody Usuario newUsuario){
+    //     usuarioRepository.save(newUsuario);
+    //     return newUsuario;
+    // }
 
-    @PutMapping("/moderador")
-    Usuario tornaMod(@RequestBody Usuario newUsuario) {
-        CadastroDAO cads = CadastroDAO.getInstance();
-        ModeradorDAO mods = ModeradorDAO.getInstance();
-        Usuario userUpdate = (Usuario) cads.findById(Long.valueOf(newUsuario.getId()));
-        userUpdate.updateRank();
-        return userUpdate;
-    }
+    // @PutMapping("/moderador")
+    // Usuario tornaMod(@RequestBody Usuario newUsuario) {
+    //     CadastroDAO cads = CadastroDAO.getInstance();
+    //     ModeradorDAO mods = ModeradorDAO.getInstance();
+    //     Usuario userUpdate = (Usuario) cads.findById(Long.valueOf(newUsuario.getId()));
+    //     userUpdate.updateRank();
+    //     return userUpdate;
+    // }
     /*
      * 1. Puxa o id do usuário
      * 2. Puxa o updateRank

@@ -11,16 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.rsea.model.Comunidade;
-import br.rsea.model.ComunidadeDAO;
 import br.rsea.repository.ComunidadeRepository;
 
 @RestController
 public class ComunidadeController {
     @Autowired
     ComunidadeRepository comunidadeRepository;
-    ComunidadeDAO dao = ComunidadeDAO.getInstance();
-    List<Comunidade> cads = dao.read();
-    int comunidadeLugar=0;
 
     @PostMapping("/criar/comunidade")
     public Comunidade postComunidade(@RequestBody Comunidade comu){
@@ -49,15 +45,15 @@ public class ComunidadeController {
     //     }     
     // }
 
-    public void setarCaminhoComu (String comunidade, int comunidadeLugar){
-        try {
-            for(int k=0 ; k<dao.read().size() ; k++){
-                if(dao.read().get(k).getTituloComu().equals(comunidade)){
-                    comunidadeLugar = k;
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Não tem nenhuma comunidade criada!");
-        }
-    }
+    // public void setarCaminhoComu (String comunidade, int comunidadeLugar){
+    //     try {
+    //         for(int k=0 ; k<dao.read().size() ; k++){
+    //             if(dao.read().get(k).getTituloComu().equals(comunidade)){
+    //                 comunidadeLugar = k;
+    //             }
+    //         }
+    //     } catch (Exception e) {
+    //         System.out.println("Não tem nenhuma comunidade criada!");
+    //     }
+    // }
 }

@@ -40,10 +40,8 @@ public class CadastroController {
     }
 
     @GetMapping("/listar/moderadores")
-    List<Moderador> getModeradores(){
-        ModeradorDAO dao = ModeradorDAO.getInstance();
-        List<Moderador> mods = dao.read();
-        return mods;
+    public List<Moderador> getModeradores(){
+        return (List<Moderador>)ModeradorRepository.findAll();
     }
 
     @PostMapping("/criar/usuario")

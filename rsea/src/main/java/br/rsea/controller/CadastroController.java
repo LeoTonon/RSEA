@@ -25,25 +25,6 @@ public class CadastroController {
     UsuarioRepository usuarioRepository;
     @Autowired
     ModeradorRepository moderadorRepository;
-    
-    // @GetMapping("/cadastro")
-    // List<Cadastro> getCadastros(){
-    //     // CadastroDAO dao = CadastroDAO.getInstance();
-    //     // List<Cadastro> cads = dao.read();
-    //     return cads;
-    // }
-
-    // @GetMapping("/cadastro/{id}")
-    // Cadastro getusuariosById(@PathVariable("id") int id){
-    //     // CadastroDAO dao = CadastroDAO.getInstance();
-    //     // List<Cadastro> cads = dao.read();
-    //     try {
-    //         // return cads.get(id-1);
-    //     }catch(Exception e){
-    //         return null;
-    //     }
-        
-    // }
 
     @GetMapping("/listar/moderadores")
     public List<Moderador> getModeradores(){
@@ -52,9 +33,6 @@ public class CadastroController {
 
     @PostMapping("/criar/usuario")
     Usuario newUsuario(@RequestBody Usuario newUsuario){
-        // CadastroDAO cads = CadastroDAO.getInstance();
-        // cads.create(newUsuario);
-        
         return usuarioRepository.save(newUsuario);
     }
 

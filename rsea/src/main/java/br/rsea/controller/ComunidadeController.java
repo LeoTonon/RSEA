@@ -1,5 +1,7 @@
 package br.rsea.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +29,9 @@ public class ComunidadeController {
     }
 
     @GetMapping("/comunidade")
-    Comunidade getComunidade(){
-        return (Comunidade) comunidadeRepository.findAll();
+    List<Comunidade> getComunidade(){
+        List<Comunidade> comunidades = (List<Comunidade>) comunidadeRepository.findAll();
+        return comunidades; 
     }
 
     @DeleteMapping("/{comunidade}/{id}")

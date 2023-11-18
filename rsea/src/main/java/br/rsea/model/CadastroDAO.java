@@ -35,7 +35,7 @@ public class CadastroDAO {
     //Cria um novo cadastro
     public void create(Usuario novo){
         Database db = getConnection();
-        db.addCad(novo);
+        //db.addCad(novo);
     }   
 
     // Recupera todas as listas

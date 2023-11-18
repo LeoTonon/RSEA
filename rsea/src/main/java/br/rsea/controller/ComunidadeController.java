@@ -26,16 +26,15 @@ public class ComunidadeController {
     public Comunidade postComunidade(@RequestBody Comunidade comu){
         //dao.create(comu);
         try {
-            comunidadeRepository.save(comu);
-            return (Comunidade) comunidadeRepository.findAll();
+            return comunidadeRepository.save(comu);
         } catch (Exception e) {
             return null;
         }
     }
 
     @GetMapping("/comunidade")
-    List<Comunidade> getComunidade(){
-        return (List<Comunidade>) comunidadeRepository.findAll();
+    Comunidade getComunidade(){
+        return (Comunidade) comunidadeRepository.findAll();
     }
 
     @DeleteMapping("/delete/{id}")

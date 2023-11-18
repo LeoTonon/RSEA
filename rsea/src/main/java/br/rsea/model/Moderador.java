@@ -1,8 +1,15 @@
 package br.rsea.model;
 
-public class Moderador extends Usuario{
-    private int id,reputacao;
+import javax.persistence.Entity;
+
+@Entity
+public class Moderador extends Usuario {
+    private int reputacao;
     private static String status;
+
+    public Moderador() {
+
+    }
 
     public Moderador(String apelido, double rank, int id, int reputacao) {
         super(id, apelido, rank, status);

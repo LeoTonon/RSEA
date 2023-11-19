@@ -20,7 +20,6 @@ public class ComunidadeController {
 
     @PostMapping("/criar/comunidade")
     public Comunidade postComunidade(@RequestBody Comunidade comu){
-        //dao.create(comu);
         try {
             return comunidadeRepository.save(comu);
         } catch (Exception e) {
@@ -28,7 +27,7 @@ public class ComunidadeController {
         }
     }
 
-    @GetMapping("/comunidade")
+    @GetMapping("/listar/comunidades")
     List<Comunidade> getComunidade(){
         List<Comunidade> comunidades = (List<Comunidade>) comunidadeRepository.findAll();
         return comunidades; 

@@ -36,6 +36,11 @@ public class CadastroController {
         return usuarioRepository.save(newUsuario);
     }
 
+    @GetMapping("/listar/usuarios")
+    public List<Usuario> getUsuarios(){
+        return (List<Usuario>)usuarioRepository.findAll();
+    }
+
     @PutMapping("/moderador/{id}")
     Moderador newModerador(@PathVariable int id){
         Usuario usuario = (usuarioRepository.findById(id)).get();
@@ -49,4 +54,3 @@ public class CadastroController {
         }
     }
 }
-

@@ -17,14 +17,21 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http.csrf().disable()
-            .httpBasic(Customizer.withDefaults())
+        http.csrf().disable().requiresChannel(
+            channel -> channel.anyRequest().requiresSecure())
             .authorizeHttpRequests(
-                authorize -> authorize.requestMatchers(HttpMethod.POST, "/criar/usuario").permitAll()
-            .requestMatchers(HttpMethod.GET, "/livre").permitAll())
-            .authorizeHttpRequests(
-                authorize -> authorize.requestMatchers(HttpMethod.GET, "/comunidade").authenticated());
-        return http.build();
+                authorize -> authorize
+                .requestMatchers(HttpMethod.POST, "/criar/usuario").permitAll()
+                .requestMatchers(HttpMethod.POST, "/criar/comunidade").permitAll())
+                .authorizeHttpRequests(
+                authorize -> authorize
+                .requestMatchers(HttpMethod.GET, "/listar/comunidades").authenticated()
+                .requestMatchers(HttpMethod.GET, "/listar/moderadores").authenticated()
+                .requestMatchers(HttpMethod.GET, "/listar/usuarios").authenticated()
+                .requestMatchers(HttpMethod.PUT, "/moderador/{id}").authenticated()
+                .requestMatchers(HttpMethod.DELETE, "/{comunidade}/{id}").authenticated())
+            .httpBasic(Customizer.withDefaults());
+                return http.build();
  }
 
 

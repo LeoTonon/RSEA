@@ -20,12 +20,10 @@ public class LoadDataInDb implements CommandLineRunner {
     
     @Override
     public void run(String... args) throws Exception {
-        ArrayList<Usuario> usuariosNovos = new ArrayList<>();
         Usuario user = new Usuario();
         user.setUsername("orion");
         user.setPassword(passwordEncoder.encode("1234"));
-        usuariosNovos.add(user);
         
-        usuarioRepository.saveAll(usuariosNovos);
+        usuarioRepository.save(user);
     }
 }

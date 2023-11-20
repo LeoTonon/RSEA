@@ -10,7 +10,7 @@ import jakarta.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Usuario{
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
@@ -18,8 +18,8 @@ public class Usuario{
     public String status;
     public String username;
     public String password;
-    @Column(name = "rank", nullable = false)
-    public double rank;
+    @Column(name = "user_rank", nullable = false)  // Renomeie a coluna para evitar conflitos com palavras reservadas
+    public double userRank;
 
     public Usuario() {
     }
@@ -30,7 +30,7 @@ public class Usuario{
         this.username = username;
         this.password = password;
         this.apelido = apelido;
-        this.rank = rank;
+        this.userRank = rank;
         this.status = status;
     }
 
@@ -75,10 +75,10 @@ public class Usuario{
     }
 
     public double getRank() {
-        return rank;
+        return userRank;
     }
 
     public void setRank(double rank) {
-        this.rank = rank;
+        this.userRank = rank;
     }
 }

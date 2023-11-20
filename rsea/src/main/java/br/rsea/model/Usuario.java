@@ -16,18 +16,38 @@ public class Usuario{
     public int id;
     public String apelido;
     public String status;
+    public String username;
+    public String password;
     @Column(name = "rank", nullable = false)
     public double rank;
 
     public Usuario() {
     }
 
-    public Usuario(int id,String apelido, double rank,String status) {
+    public Usuario(int id,String username,String password,String apelido, double rank,String status) {
         super();
         this.id = id;
+        this.username = username;
+        this.password = password;
         this.apelido = apelido;
         this.rank = rank;
         this.status = status;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getId() {

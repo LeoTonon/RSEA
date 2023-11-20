@@ -1,10 +1,10 @@
 package br.rsea.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +22,8 @@ import br.rsea.repository.ModeradorRepository;
 @RestController
 public class CadastroController {
     @Autowired
+    PasswordEncoder passwordEncoder;
+    @Autowired
     UsuarioRepository usuarioRepository;
     @Autowired
     ModeradorRepository moderadorRepository;
@@ -32,8 +34,16 @@ public class CadastroController {
     }
 
     @PostMapping("/criar/usuario")
-    Usuario newUsuario(@RequestBody Usuario newUsuario){
-        return usuarioRepository.save(newUsuario);
+    String newUsuario(@RequestBody Usuario newUsuario){
+        newUsuario.setPassword(
+            passwordEncoder.encode(newUsuario.getPassword())
+        );
+        Usuario usuCriado = usuarioRepository.save(newUsuario);
+
+        if(usuCriado != null)
+            return "Usuário criado com sucesso!";
+
+        return "Erro ao criar o usuário";
     }
 
     @GetMapping("/listar/usuarios")
@@ -45,7 +55,7 @@ public class CadastroController {
     Moderador newModerador(@PathVariable int id){
         Usuario usuario = (usuarioRepository.findById(id)).get();
         if(usuario != null){
-            Moderador resultModerador = new Moderador(usuario.getApelido(), usuario.getRank(), usuario.getId(), 0);
+            Moderador resultModerador = new Moderador(usuario.getId(), usuario.getApelido(), usuario.getUsername(),usuario.getPassword(),usuario.getRank(), 0);
             resultModerador.setRank(1900);
             moderadorRepository.save(resultModerador);
             return resultModerador;

@@ -11,8 +11,8 @@ public class Moderador extends Usuario {
 
     }
 
-    public Moderador(String apelido, double rank, int id, int reputacao) {
-        super(id, apelido, rank, status);
+    public Moderador(int id,String apelido,String nome,String senha, double rank, int reputacao) {
+        super(id, nome, senha, apelido, rank, status);
         this.id = id;
         this.reputacao = reputacao;
     }

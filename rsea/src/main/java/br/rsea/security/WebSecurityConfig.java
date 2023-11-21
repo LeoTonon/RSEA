@@ -17,8 +17,9 @@ import br.rsea.security.service.MyUserDetailServices;
 public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http.csrf().disable().requiresChannel(
-            channel -> channel.anyRequest().requiresSecure())
+        http.csrf().disable()
+        // .requiresChannel(
+        //     channel -> channel.anyRequest().requiresSecure())
             .authorizeHttpRequests(
                 authorize -> authorize
                 .requestMatchers(HttpMethod.POST, "/criar/usuario").permitAll()

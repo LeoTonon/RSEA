@@ -50,4 +50,4 @@ jobs:
           app-name: 'rsea-springsecurity-server'
           slot-name: 'Production'
           package: '*.jar'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2654DD6B5B0543C08E7B89DA8C22CC70 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DB1C8D805AB148AD8EC5976C5A8A8822 }}

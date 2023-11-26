@@ -21,7 +21,7 @@ public class LoadDataInDb implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         Usuario user = new Usuario();
-        user.setUsername("orion");
+        user.setUsername("Usuario RSEA");
         user.setPassword(passwordEncoder.encode("1234"));
         
         usuarioRepository.save(user);

@@ -18,8 +18,8 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.csrf().disable()
-        // .requiresChannel(
-        //     channel -> channel.anyRequest().requiresSecure())
+        .requiresChannel(
+            channel -> channel.anyRequest().requiresSecure())
             .authorizeHttpRequests(
                 authorize -> authorize
                 .requestMatchers(HttpMethod.POST, "/criar/usuario").permitAll()
